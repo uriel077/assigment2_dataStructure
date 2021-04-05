@@ -52,12 +52,12 @@ public class Tester {
 	 * Checks the CharLinkedList class.
 	 */
 	private static void testCharLinkedList(){
-		/*CharLinkedList list = new CharLinkedListImpl();
+		CharLinkedList list = new CharLinkedListImpl();
 		test(list.size() == 0, "The size of the list should be 0");
 		list.add('a');
 		test(list.size() == 1, "The size of the list should be 1");
 		test(list.firstChar() == 'a', "The first char should be 'a'");
-		 */
+
 	}
 
 	/**
@@ -92,9 +92,11 @@ public class Tester {
 	}
 
 	private static void testLongestRepeatedSuffixTree(){
-		testLongestRepeated("mississippi", "issi");
+		/*testLongestRepeated("mississippi", "issi");
 		testLongestRepeated("abc", "X");
 		testLongestRepeated("abbc", "b");
+
+		 */
 	}
 
 	private static void testLongestRepeated(String word, String expected){
