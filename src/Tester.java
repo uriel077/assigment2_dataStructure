@@ -57,6 +57,14 @@ public class Tester {
 		list.add('a');
 		test(list.size() == 1, "The size of the list should be 1");
 		test(list.firstChar() == 'a', "The first char should be 'a'");
+		list.add('b');
+		test(list.size() == 2, "The size of the list should be 1");
+		test(list.firstChar() == 'a', "The first char should be 'a'");
+		CharLinkedList many = new CharLinkedListImpl();
+		many.append(list);
+		test(many.size() == 2, "The size of the list should be 1");
+
+
 
 	}
 

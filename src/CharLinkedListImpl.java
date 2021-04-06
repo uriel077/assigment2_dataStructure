@@ -2,19 +2,22 @@ public class CharLinkedListImpl extends CharLinkedList{
 
     public CharLinkedListImpl(){
         super();
-
     }
+    /**
+     * add char to the linked list
+     * @param c Character to add
+     */
     @Override
     public void add(char c) {
         ICharLinkedListNode newAppend=new CharLinkedListNodeImpl(c);
-        if(this.size()==0){
+        if(this.size()==0){//if this is the firs object
             this.first =newAppend ;
             this.last = newAppend;
-            return;
         }
-
-        this.last.setNext(newAppend);
-        this.last=newAppend;
+        else {//add to the end the object
+            this.last.setNext(newAppend);
+            this.last=newAppend;
+        }
     }
 
     @Override
@@ -39,5 +42,4 @@ public class CharLinkedListImpl extends CharLinkedList{
             this.add(c);
         }
     }
-
 }
