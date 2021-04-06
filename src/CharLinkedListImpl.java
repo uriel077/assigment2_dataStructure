@@ -25,6 +25,10 @@ public class CharLinkedListImpl extends CharLinkedList{
         return this.first.getChar();
     }
 
+    /**
+     * loop until get to end of the list while counting
+     * @return size of the list
+     */
     @Override
     public int size() {
         ICharLinkedListNode temp=this.first;
@@ -36,6 +40,10 @@ public class CharLinkedListImpl extends CharLinkedList{
         return size;
     }
 
+    /**
+     * append char linked list to other char list
+     * @param toAppend The list to be appended at the end of this list
+     */
     @Override
     public void append(CharLinkedList toAppend) {
         for (Character c :toAppend ) {
