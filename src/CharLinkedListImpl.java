@@ -3,6 +3,7 @@ public class CharLinkedListImpl extends CharLinkedList{
     public CharLinkedListImpl(){
         super();
     }
+
     /**
      * add char to the linked list
      * @param c Character to add
@@ -24,7 +25,6 @@ public class CharLinkedListImpl extends CharLinkedList{
     public char firstChar() {
         return this.first.getChar();
     }
-
     /**
      * loop until get to end of the list while counting
      * @return size of the list
