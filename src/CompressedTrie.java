@@ -6,7 +6,7 @@ public class CompressedTrie {
      * Constructs a simple empty suffix tree
      */
     public CompressedTrie() {
-        //this.root = new SuffixTreeNodeImpl();
+       // this.root = new SuffixTreeNodeImpl();
     }
 
     /**

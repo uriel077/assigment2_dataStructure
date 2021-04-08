@@ -52,12 +52,24 @@ public class Tester {
 	 * Checks the CharLinkedList class.
 	 */
 	private static void testCharLinkedList(){
-		/*CharLinkedList list = new CharLinkedListImpl();
+		CharLinkedList list = new CharLinkedListImpl();
 		test(list.size() == 0, "The size of the list should be 0");
 		list.add('a');
 		test(list.size() == 1, "The size of the list should be 1");
 		test(list.firstChar() == 'a', "The first char should be 'a'");
-		 */
+		test(list.last.getChar() == 'a', "The last char of the list should be a");
+		list.add('b');
+		test(list.size() == 2, "The size of the list should be 2");
+		test(list.firstChar() == 'a', "The first char should be 'a'");
+		test(list.last.getChar() == 'b', "The last char of the list should be b");
+		test(list.toString().equals("ab"), "The list should be ab");
+		CharLinkedList many = new CharLinkedListImpl();
+		many.append(list);
+		test(many.size() == 2, "The size of the list should be 2");
+		test(many.firstChar() == 'a', "The first char should be 'a'");
+		test(many.last.getChar() == 'b', "The last char of the list should be b");
+		test(many.toString().equals("ab"), "The list should be ab");
+
 	}
 
 	/**
@@ -92,9 +104,11 @@ public class Tester {
 	}
 
 	private static void testLongestRepeatedSuffixTree(){
-		testLongestRepeated("mississippi", "issi");
+		/*testLongestRepeated("mississippi", "issi");
 		testLongestRepeated("abc", "X");
 		testLongestRepeated("abbc", "b");
+
+		 */
 	}
 
 	private static void testLongestRepeated(String word, String expected){

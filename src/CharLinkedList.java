@@ -43,10 +43,10 @@ public abstract class CharLinkedList implements Iterable<Character>{
      * @return A new list containing the single character c
      */
     public static CharLinkedList from(char c){
-      /*  CharLinkedList linkedList = new CharLinkedListImpl();
+        CharLinkedList linkedList = new CharLinkedListImpl();
         linkedList.add(c);
         return linkedList;
-       */
+
     }
 
     /**
@@ -55,11 +55,12 @@ public abstract class CharLinkedList implements Iterable<Character>{
      * @return A new list containing all characters of s
      */
     public static CharLinkedList from(String s){
-        /*CharLinkedList linkedList = new CharLinkedListImpl();
+        CharLinkedList linkedList = new CharLinkedListImpl();
         for (char c : s.toCharArray())
             linkedList.add(c);
         return linkedList;
-         */
+
+
     }
 
     /**
