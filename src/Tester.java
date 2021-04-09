@@ -16,13 +16,13 @@ public class Tester {
 		// Each function here should test a different class.
 
 		// CharLinkedList
-		testCharLinkedList();
+//		testCharLinkedList();
 
 		// SuffixTreeNode
 		testSuffixTreeNode();
 
 		// longestRepeatedSuffixTree
-		testLongestRepeatedSuffixTree();
+//		testLongestRepeatedSuffixTree();
 		
 		/* TODO - continue writing a function for each class */
 
@@ -76,31 +76,29 @@ public class Tester {
 	 * Checks the SuffixTreeNode class.
 	 */
 	private static void testSuffixTreeNode() {
-		/*
 		// test empty root
 		SuffixTreeNode node = new SuffixTreeNodeImpl();
 		test(node.getTotalWordLength() == 0, "node word length should be 0");
 		test(node.getNumOfChildren() == 0, "node num of children should be 0");
 
 		// test search, binary search, shiftChildren and addChild
-		SuffixTreeNode child1 = new SuffixTreeNodeImpl(CharLinkedList.from("abc"), node);
-		SuffixTreeNode child2 = new SuffixTreeNodeImpl(CharLinkedList.from("bcd"), node);
-		SuffixTreeNode child3 = new SuffixTreeNodeImpl(CharLinkedList.from("hello"), node);
-		SuffixTreeNode child4 = new SuffixTreeNodeImpl(CharLinkedList.from("mmmmm"), node);
-		node.setChildren(new SuffixTreeNode[]{child1, child2, child3, child4, null, null, null, null}, 4);
+//		SuffixTreeNode child1 = new SuffixTreeNodeImpl(CharLinkedList.from("abc"), node);
+//		SuffixTreeNode child2 = new SuffixTreeNodeImpl(CharLinkedList.from("bcd"), node);
+//		SuffixTreeNode child3 = new SuffixTreeNodeImpl(CharLinkedList.from("hello"), node);
+//		SuffixTreeNode child4 = new SuffixTreeNodeImpl(CharLinkedList.from("mmmmm"), node);
+//		node.setChildren(new SuffixTreeNode[]{child1, child2, child3, child4, null, null, null, null}, 4);
 
 		// binary search
-		test(node.binarySearch('b', 0, 3) == child2, "search for 'b' should find child2");
+//		test(node.binarySearch('b', 0, 3) == child2, "search for 'b' should find child2");
 
 		// search
-		test(node.search('a') == child1, "search for 'a' should return child1");
+//		test(node.search('a') == child1, "search for 'a' should return child1");
 		test(node.search('x') == null, "search for 'x' should fail");
 
 		// add child
-		SuffixTreeNode child5 = new SuffixTreeNodeImpl(CharLinkedList.from("dog"), node);
-		node.addChild(child5);
-		test(node.getChildren()[2] == child5, "3rd child should be child5");
-		 */
+//		SuffixTreeNode child5 = new SuffixTreeNodeImpl(CharLinkedList.from("dog"), node);
+//		node.addChild(child5);
+//		test(node.getChildren()[2] == child5, "3rd child should be child5");
 	}
 
 	private static void testLongestRepeatedSuffixTree(){
