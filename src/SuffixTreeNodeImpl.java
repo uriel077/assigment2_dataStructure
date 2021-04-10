@@ -1,4 +1,5 @@
 import java.time.Clock;
+import java.util.Arrays;
 
 public class SuffixTreeNodeImpl extends SuffixTreeNode {
 
@@ -107,13 +108,44 @@ public class SuffixTreeNodeImpl extends SuffixTreeNode {
     }
 
     /**
-     *
-     * @param
-     * @param
-     * @return
+     * find the
+     * @param subword Char array representing string to calculate the number of its occurrences in tree's word
+     * @param from wich index to start
+     * @return num of occurrences
      */
     @Override
     public int numOfOccurrences(char[] subword, int from) {
-        return 0;
+        int sum=0;
+        if (from!=0){
+            subword= Arrays.copyOfRange(subword,from,subword.length);
+            from=0;
+        }
+        subword= Arrays.copyOfRange(subword,highShareIndex(subword),subword.length);
+        if(subword.length==0){
+            if(this.children.length==0)
+                return 1;
+            for(SuffixTreeNode child:this.children){
+                sum+= child.numOfOccurrences(subword,from);
+            }
+        }
+        this.search(subword[0]).numOfOccurrences(subword,from);
+        return sum;
+    }
+
+    /**
+     * find the high index that they share togther whith char
+     * @param subword the wanted list
+     * @return high index that they share
+     */
+    private int highShareIndex(char[] subword){
+        int i=0;
+        for(char c:this.chars){
+            if (subword.length==i||this.chars.size()==i)
+                break;
+            if(subword[i]!=c)
+                break;
+            i++;
+        }
+        return i;
     }
 }
