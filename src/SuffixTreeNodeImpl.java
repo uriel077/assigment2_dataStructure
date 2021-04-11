@@ -97,14 +97,17 @@ public class SuffixTreeNodeImpl extends SuffixTreeNode {
     @Override
     public void compress() {
         int childLen = this.getNumOfChildren();
-        if(childLen > 1 || childLen == 0)
-            return;
-        SuffixTreeNode child = this.children[0]; // new SuffixTreeNode(this.children[0]);
-        this.chars.last.setNext(child.chars.first); // new CharLinkedList(child.chars).first); // copy constructor is needed
-        for(int i = 0;i < child.getNumOfChildren();i++) {
-            this.children[i] = child.children[i]; // new SuffixTreeNode(child.children[i]);
+        if( childLen == 0)
+            return ;
+
+        if(childLen==1 && this.children[0].getNumOfChildren()==0){
+            this.getChars().append(this.children[0].getChars());
+            this.children[0]=null;
         }
-        this.children[0] = null;
+        for(SuffixTreeNode child:this.children){
+            if(child!=null)
+                child.compress();
+        }
     }
 
     /**
@@ -125,7 +128,8 @@ public class SuffixTreeNodeImpl extends SuffixTreeNode {
             if(this.children.length==0)
                 return 1;
             for(SuffixTreeNode child:this.children){
-                sum+= child.numOfOccurrences(subword,from);
+                if(child!=null)
+                    sum+= child.numOfOccurrences(subword,from);
             }
         }
         this.search(subword[0]).numOfOccurrences(subword,from);

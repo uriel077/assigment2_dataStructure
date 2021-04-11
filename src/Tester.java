@@ -18,7 +18,7 @@ public class Tester {
 		// Each function here should test a different class.
 
 		// CharLinkedList
-		testCharLinkedList();
+		//testCharLinkedList();
 
 		// SuffixTreeNode
 		testSuffixTreeNode();
@@ -79,7 +79,7 @@ public class Tester {
 	 */
 	private static void testSuffixTreeNode() {
 		// test empty root
-		SuffixTreeNode node = new SuffixTreeNodeImpl();
+		/*SuffixTreeNode node = new SuffixTreeNodeImpl();
 		test(node.getTotalWordLength() == 0, "node word length should be 0");
 		test(node.getNumOfChildren() == 0, "node num of children should be 0");
 
@@ -101,13 +101,30 @@ public class Tester {
 		SuffixTreeNode child5 = new SuffixTreeNodeImpl(CharLinkedList.from("dog"), node);
 		node.addChild(child5);
 		test(node.getChildren()[2] == child5, "3rd child should be child5");
-//		System.out.println(node.children[0]);
-//		System.out.println(node.children[0].chars.last.getChar());
-//		System.out.println(node.children[0].getNumOfChildren());
-//		node.compress();
-//		System.out.println(node.children[0]);
-//		System.out.println(node.children[0].chars.last.getChar());
-//		System.out.println(node.children[0].getNumOfChildren());
+		System.out.println(node.children[0]);
+		System.out.println(node.children[0].chars.last.getChar());
+		System.out.println(node.children[0].getNumOfChildren());
+
+		node.compress();
+
+		System.out.println(node.children[0]);
+		System.out.println(node.children[0].chars.last.getChar());
+		System.out.println(node.children[0].getNumOfChildren());
+
+		 */
+
+		System.out.println("------------------------------------");
+		SuffixTreeNode node1 = new SuffixTreeNodeImpl();
+		SuffixTreeNode child6= new SuffixTreeNodeImpl(CharLinkedList.from("mississippi"), node1);
+
+		System.out.println(child6.children[0]);
+		System.out.println(child6.getChildren().length);
+		for(SuffixTreeNode child:child6.getChildren()){
+			System.out.println(child);
+		}
+		child6.compress();
+		System.out.println(child6.getChildren().length);
+
 	}
 
 	private static void testLongestRepeatedSuffixTree(){
