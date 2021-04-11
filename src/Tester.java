@@ -1,3 +1,5 @@
+import java.time.Clock;
+
 /**
  * This is a testing framework. Use it extensively to verify that your code is working
  * properly.
@@ -22,7 +24,7 @@ public class Tester {
 		testSuffixTreeNode();
 
 		// longestRepeatedSuffixTree
-		testLongestRepeatedSuffixTree();
+//		testLongestRepeatedSuffixTree();
 		
 		/* TODO - continue writing a function for each class */
 
@@ -76,7 +78,6 @@ public class Tester {
 	 * Checks the SuffixTreeNode class.
 	 */
 	private static void testSuffixTreeNode() {
-		/*
 		// test empty root
 		SuffixTreeNode node = new SuffixTreeNodeImpl();
 		test(node.getTotalWordLength() == 0, "node word length should be 0");
@@ -100,7 +101,13 @@ public class Tester {
 		SuffixTreeNode child5 = new SuffixTreeNodeImpl(CharLinkedList.from("dog"), node);
 		node.addChild(child5);
 		test(node.getChildren()[2] == child5, "3rd child should be child5");
-		 */
+//		System.out.println(node.children[0]);
+//		System.out.println(node.children[0].chars.last.getChar());
+//		System.out.println(node.children[0].getNumOfChildren());
+//		node.compress();
+//		System.out.println(node.children[0]);
+//		System.out.println(node.children[0].chars.last.getChar());
+//		System.out.println(node.children[0].getNumOfChildren());
 	}
 
 	private static void testLongestRepeatedSuffixTree(){

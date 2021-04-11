@@ -46,7 +46,6 @@ public abstract class CharLinkedList implements Iterable<Character>{
         CharLinkedList linkedList = new CharLinkedListImpl();
         linkedList.add(c);
         return linkedList;
-
     }
 
     /**

@@ -1,4 +1,4 @@
-public class CharLinkedListImpl extends CharLinkedList{
+public class CharLinkedListImpl extends CharLinkedList {
 
     public CharLinkedListImpl(){
         super();
@@ -11,13 +11,12 @@ public class CharLinkedListImpl extends CharLinkedList{
     @Override
     public void add(char c) {
         ICharLinkedListNode newAppend=new CharLinkedListNodeImpl(c);
-        if(this.size()==0){//if this is the firs object
-            this.first =newAppend ;
+        if(this.size() == 0){ //if this is the firs object
+            this.first = newAppend;
             this.last = newAppend;
-        }
-        else {//add to the end the object
+        } else { //add to the end the object
             this.last.setNext(newAppend);
-            this.last=newAppend;
+            this.last = newAppend;
         }
     }
 
@@ -31,11 +30,11 @@ public class CharLinkedListImpl extends CharLinkedList{
      */
     @Override
     public int size() {
-        ICharLinkedListNode temp=this.first;
-        int size=0;
-        while (temp!=null){
+        ICharLinkedListNode temp = this.first;
+        int size = 0;
+        while (temp != null){
             size++;
-            temp=temp.getNext();
+            temp = temp.getNext();
         }
         return size;
     }
