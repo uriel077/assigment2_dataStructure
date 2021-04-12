@@ -22,9 +22,10 @@ public class Tester {
         //testCharLinkedList();
 
         // SuffixTreeNode
-        //testSuffixTreeNode();
+        testSuffixTreeNode();
 
         testSuffixTree();
+
         // longestRepeatedSuffixTree
         //testLongestRepeatedSuffixTree();
 
@@ -68,12 +69,15 @@ public class Tester {
         test(list.firstChar() == 'a', "The first char should be 'a'");
         test(list.last.getChar() == 'b', "The last char of the list should be b");
         test(list.toString().equals("ab"), "The list should be ab");
+
         CharLinkedList many = new CharLinkedListImpl();
         many.append(list);
         test(many.size() == 2, "The size of the list should be 2");
         test(many.firstChar() == 'a', "The first char should be 'a'");
         test(many.last.getChar() == 'b', "The last char of the list should be b");
         test(many.toString().equals("ab"), "The list should be ab");
+
+
 
     }
 
@@ -115,21 +119,19 @@ public class Tester {
         System.out.println(node.children[0].getNumOfChildren());
 
 
-        System.out.println("------------------------------------");
-        SuffixTreeNode node1 = new SuffixTreeNodeImpl();
-        SuffixTreeNode child6 = new SuffixTreeNodeImpl(CharLinkedList.from("mississippi"), node1);
 
     }
 
     private static void testSuffixTree() {
         SuffixTree tree1 = new SuffixTreeImpl("abc");
-        //for (SuffixTreeNode child : tree1.getRoot().getChildren())
-        //System.out.println(child);
+
+        test(!tree1.contains("abcd"), "not contain abcd");
+        test(!tree1.contains("acb"), "not contain acb");
+
         SuffixTree tree = new SuffixTreeImpl("mississippi");
-        //for (SuffixTreeNode child : tree.getRoot().getChildren())
-        //System.out.println(child);
-        //tree.compressTree();
+
         test(tree.numOfOccurrences("iss") == 2, "need to be 2 ");
+        test(tree.numOfOccurrences("i") == 4, "need to be 4 ");
         test(tree.numOfOccurrences("ms") == 0, "need to be 0 ");
         test(tree.numOfOccurrences("$") == 1, "need to be 1 ");
     }

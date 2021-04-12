@@ -12,7 +12,8 @@ public class SuffixTreeNodeImpl extends SuffixTreeNode {
     }
 
     /**
-     * @param
+     * search specific node in tree
+     * @param c Character to search for
      * @return
      */
     @Override
@@ -21,7 +22,10 @@ public class SuffixTreeNodeImpl extends SuffixTreeNode {
     }
 
     /**
-     * @param
+     * binary search on the children
+     * @param target Character to search for
+     * @param left Left boundary index for searching in the children array
+     * @param right Right boundary index for searching in the children array
      * @return
      */
     @Override
@@ -38,8 +42,8 @@ public class SuffixTreeNodeImpl extends SuffixTreeNode {
     }
 
     /**
-     * @param
-     * @return
+     * shift child array
+     * @param until Left boundary index of shifting
      */
     @Override
     public void shiftChildren(int until) {
@@ -54,7 +58,8 @@ public class SuffixTreeNodeImpl extends SuffixTreeNode {
     }
 
     /**
-     * @param
+     * add child in order way
+     * @param node node to add
      */
     @Override
     public void addChild(SuffixTreeNode node) {
@@ -73,6 +78,11 @@ public class SuffixTreeNodeImpl extends SuffixTreeNode {
         }
     }
 
+    /**
+     * add child to specific node
+     * @param index location in child array
+     * @param node new node
+     */
     private void addChildIndex(int index, SuffixTreeNode node) {
         this.shiftChildren(index);
         this.children[index] = node;  // copy constructor is needed for copying the cell content
@@ -82,8 +92,10 @@ public class SuffixTreeNodeImpl extends SuffixTreeNode {
 
 
     /**
-     * @param
-     * @param
+     * add word to suffix tree
+     *
+     * @param word The tree's full word
+     * @param from Suffix index
      */
     @Override
     public void addSuffix(char[] word, int from) {
@@ -99,7 +111,7 @@ public class SuffixTreeNodeImpl extends SuffixTreeNode {
     }
 
     /**
-     *
+     * compress every node with one child
      */
     @Override
     public void compress() {
@@ -107,7 +119,7 @@ public class SuffixTreeNodeImpl extends SuffixTreeNode {
         if (childLen == 0)
             return;
         for (int i = 0; i < this.getNumOfChildren(); i++)
-                this.children[i].compress();
+            this.children[i].compress();
         if (childLen == 1) {
             this.getChars().append(this.children[0].getChars());
             if (this.children[0].getNumOfChildren() != 0) {
@@ -118,7 +130,7 @@ public class SuffixTreeNodeImpl extends SuffixTreeNode {
     }
 
     /**
-     * find the
+     * num of subword that he reprsent in the tree
      *
      * @param subword Char array representing string to calculate the number of its occurrences in tree's word
      * @param from    wich index to start
@@ -127,20 +139,34 @@ public class SuffixTreeNodeImpl extends SuffixTreeNode {
     @Override
     public int numOfOccurrences(char[] subword, int from) {
         SuffixTreeNode node = find_node(subword, from, this);
-        return calculate_leaf(node);
+        return calculateLeafTree(node);
     }
 
-    public int calculate_leaf(SuffixTreeNode node) {
+    /**
+     * calculate the numbers of leafs of tree
+     *
+     * @param node the wanted root of the tree
+     * @return number of leafs
+     */
+    public int calculateLeafTree(SuffixTreeNode node) {
         if (node == null)
             return 0;
         if (node.getNumOfChildren() == 0)
             return 1;
         int sum = 0;
         for (int i = 0; i < node.getNumOfChildren(); i++)
-            sum += calculate_leaf(node.children[i]);
+            sum += calculateLeafTree(node.children[i]);
         return sum;
     }
 
+    /**
+     * find specific of nofe with trace back inside tree
+     *
+     * @param subword the wanted subword
+     * @param from    where to start
+     * @param node    started node
+     * @return the wanted node that represent the subword
+     */
     private SuffixTreeNode find_node(char[] subword, int from, SuffixTreeNode node) {
         if (node == null)
             return null;
