@@ -63,7 +63,8 @@ public class SuffixTreeNodeImpl extends SuffixTreeNode {
     @Override
     public void addChild(SuffixTreeNode node) {
         if(this.getNumOfChildren()==0)
-            this.children[0]=node;
+            this.children[0] = node;
+
         for(int i = 0;i <= this.getNumOfChildren();i++) {
             if(node.chars.firstChar() <= this.children[i].chars.firstChar()) {
                 this.shiftChildren(i);
@@ -100,7 +101,7 @@ public class SuffixTreeNodeImpl extends SuffixTreeNode {
     public void compress() {
         int childLen = this.getNumOfChildren();
         if( childLen == 0)
-            return ;
+            return;
         if(childLen==1 ){
         if( this.children[0].getNumOfChildren()==0){
             this.getChars().append(this.children[0].getChars());
@@ -120,22 +121,33 @@ public class SuffixTreeNodeImpl extends SuffixTreeNode {
      */
     @Override
     public int numOfOccurrences(char[] subword, int from) {
+        SuffixTreeNode node= find_node(subword,from,this);
+
+        return calculate_leaf(node);
+    }
+    public int calculate_leaf(SuffixTreeNode node){
+        if(node==null)
+            return 0;
+        if(node.getNumOfChildren()==0)
+            return 1;
         int sum=0;
-        if (from!=0){
-            subword= Arrays.copyOfRange(subword,from,subword.length);
-            from=0;
+        for(SuffixTreeNode child:node.children){
+            sum+= calculate_leaf(child);
         }
-        subword= Arrays.copyOfRange(subword,highShareIndex(subword),subword.length);
-        if(subword.length==0){
-            if(this.children.length==0)
-                return 1;
-            for(SuffixTreeNode child:this.children){
-                if(child!=null)
-                    sum+= child.numOfOccurrences(subword,from);
-            }
-        }
-        this.search(subword[0]).numOfOccurrences(subword,from);
         return sum;
+
+    }
+    private SuffixTreeNode find_node(char[] subword, int from,SuffixTreeNode node){
+        if(node==null)
+            return null;
+
+        if(this.children.length==0)
+            return null;
+        from+=highShareIndex(subword,from,node);
+        if (from==subword.length){
+            return node;
+        }
+        return find_node(subword,from,node.search(subword[from]));
     }
 
     /**
@@ -143,15 +155,15 @@ public class SuffixTreeNodeImpl extends SuffixTreeNode {
      * @param subword the wanted list
      * @return high index that they share
      */
-    private int highShareIndex(char[] subword){
+    private int highShareIndex(char[] subword,int from,SuffixTreeNode node){
         int i=0;
-        if (this.chars==null){
+        if (node.chars==null){
             return 0;
         }
-        for(char c:this.chars){
-            if (subword.length==i||this.chars.size()==i)
+        for(char c:node.chars){
+            if (subword.length==from+i||node.chars.size()==i)
                 break;
-            if(subword[i]!=c)
+            if(subword[from+i]!=c)
                 break;
             i++;
         }
