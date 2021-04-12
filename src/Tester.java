@@ -125,6 +125,7 @@ public class Tester {
 		SuffixTree tree =new SuffixTreeImpl("mississippi");
 		for (SuffixTreeNode child : tree.getRoot().getChildren())
 			System.out.println(child);
+		tree.compressTree();
 		System.out.println(tree.numOfOccurrences("iss"));
 		System.out.println(tree.numOfOccurrences("ms"));
 		System.out.println(tree.numOfOccurrences("$"));

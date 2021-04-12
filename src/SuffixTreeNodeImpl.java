@@ -62,19 +62,31 @@ public class SuffixTreeNodeImpl extends SuffixTreeNode {
      */
     @Override
     public void addChild(SuffixTreeNode node) {
-        if(this.getNumOfChildren()==0)
-            this.children[0] = node;
+        if(node==null)
+            return;
+        if(this.getNumOfChildren()==0){
+            addChildIndex(0,node);
+            return;
+        }
 
         for(int i = 0;i <= this.getNumOfChildren();i++) {
-            if(node.chars.firstChar() <= this.children[i].chars.firstChar()) {
-                this.shiftChildren(i);
-                this.children[i] = node;  // copy constructor is needed for copying the cell content
-                this.numOfChildren++;
-                this.descendantLeaves = 1;
+            if(this.children[i]==null){
+                addChildIndex(i,node);
+                i = this.getNumOfChildren();
+            }
+           else if(node.chars.firstChar() <= this.children[i].chars.firstChar()) {
+                addChildIndex(i,node);
                 i = this.getNumOfChildren();
             }
         }
     }
+    private void addChildIndex(int index,SuffixTreeNode node){
+        this.shiftChildren(index);
+        this.children[index] = node;  // copy constructor is needed for copying the cell content
+        this.numOfChildren++;
+        this.descendantLeaves = 1;
+    }
+
 
     /**
      *
