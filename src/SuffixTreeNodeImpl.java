@@ -62,7 +62,9 @@ public class SuffixTreeNodeImpl extends SuffixTreeNode {
      */
     @Override
     public void addChild(SuffixTreeNode node) {
-        for(int i = 0;i < this.getNumOfChildren();i++) {
+        if(this.getNumOfChildren()==0)
+            this.children[0]=node;
+        for(int i = 0;i <= this.getNumOfChildren();i++) {
             if(node.chars.firstChar() <= this.children[i].chars.firstChar()) {
                 this.shiftChildren(i);
                 this.children[i] = node;  // copy constructor is needed for copying the cell content
@@ -85,7 +87,7 @@ public class SuffixTreeNodeImpl extends SuffixTreeNode {
         char c = word[from];
         SuffixTreeNode node = this.search(c);
         if(node == null) {
-            node = new SuffixTreeNodeImpl(); // need to add more attributes to the node object
+            node = new SuffixTreeNodeImpl(CharLinkedList.from(c),this); // need to add more attributes to the node object
             this.addChild(node);
         }
         node.addSuffix(word, from + 1);
@@ -99,15 +101,15 @@ public class SuffixTreeNodeImpl extends SuffixTreeNode {
         int childLen = this.getNumOfChildren();
         if( childLen == 0)
             return ;
-
-        if(childLen==1 && this.children[0].getNumOfChildren()==0){
+        if(childLen==1 ){
+        if( this.children[0].getNumOfChildren()==0){
             this.getChars().append(this.children[0].getChars());
             this.children[0]=null;
         }
         for(SuffixTreeNode child:this.children){
             if(child!=null)
                 child.compress();
-        }
+        }}
     }
 
     /**
@@ -143,6 +145,9 @@ public class SuffixTreeNodeImpl extends SuffixTreeNode {
      */
     private int highShareIndex(char[] subword){
         int i=0;
+        if (this.chars==null){
+            return 0;
+        }
         for(char c:this.chars){
             if (subword.length==i||this.chars.size()==i)
                 break;

@@ -23,6 +23,7 @@ public class Tester {
 		// SuffixTreeNode
 		testSuffixTreeNode();
 
+		testSuffixTree();
 		// longestRepeatedSuffixTree
 //		testLongestRepeatedSuffixTree();
 		
@@ -79,7 +80,7 @@ public class Tester {
 	 */
 	private static void testSuffixTreeNode() {
 		// test empty root
-		/*SuffixTreeNode node = new SuffixTreeNodeImpl();
+		SuffixTreeNode node = new SuffixTreeNodeImpl();
 		test(node.getTotalWordLength() == 0, "node word length should be 0");
 		test(node.getNumOfChildren() == 0, "node num of children should be 0");
 
@@ -111,19 +112,21 @@ public class Tester {
 		System.out.println(node.children[0].chars.last.getChar());
 		System.out.println(node.children[0].getNumOfChildren());
 
-		 */
+
 
 		System.out.println("------------------------------------");
 		SuffixTreeNode node1 = new SuffixTreeNodeImpl();
 		SuffixTreeNode child6= new SuffixTreeNodeImpl(CharLinkedList.from("mississippi"), node1);
 
-		System.out.println(child6.children[0]);
-		System.out.println(child6.getChildren().length);
-		for(SuffixTreeNode child:child6.getChildren()){
+
+
+	}
+	private static void testSuffixTree() {
+		SuffixTree tree =new SuffixTreeImpl("mississippi");
+		for (SuffixTreeNode child : tree.getRoot().getChildren())
 			System.out.println(child);
-		}
-		child6.compress();
-		System.out.println(child6.getChildren().length);
+		System.out.println(tree.numOfOccurrences("iss"));
+
 
 	}
 
