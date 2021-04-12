@@ -114,15 +114,22 @@ public class SuffixTreeNodeImpl extends SuffixTreeNode {
         int childLen = this.getNumOfChildren();
         if( childLen == 0)
             return;
+
+        for(int i=0;i<=this.getNumOfChildren();i++)
+            if(this.children[i]!=null)
+                this.children[i].compress();
+
         if(childLen==1 ){
-        if( this.children[0].getNumOfChildren()==0){
             this.getChars().append(this.children[0].getChars());
+            if( this.children[0].getNumOfChildren()!=0){
+                this.children= this.children[0].children;
+                this.numOfChildren= this.children[0].getNumOfChildren();
+            }else {
+                this.numOfChildren=0;
+            }
             this.children[0]=null;
         }
-        for(SuffixTreeNode child:this.children){
-            if(child!=null)
-                child.compress();
-        }}
+
     }
 
     /**

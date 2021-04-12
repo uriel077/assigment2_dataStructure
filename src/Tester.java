@@ -21,7 +21,7 @@ public class Tester {
 		//testCharLinkedList();
 
 		// SuffixTreeNode
-		testSuffixTreeNode();
+		//testSuffixTreeNode();
 
 		testSuffixTree();
 		// longestRepeatedSuffixTree
@@ -122,6 +122,12 @@ public class Tester {
 
 	}
 	private static void testSuffixTree() {
+		SuffixTree tree1 =new SuffixTreeImpl("abc");
+		for (SuffixTreeNode child : tree1.getRoot().getChildren())
+			System.out.println(child);
+
+
+
 		SuffixTree tree =new SuffixTreeImpl("mississippi");
 		for (SuffixTreeNode child : tree.getRoot().getChildren())
 			System.out.println(child);
