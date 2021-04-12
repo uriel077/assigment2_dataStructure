@@ -118,16 +118,16 @@ public class SuffixTreeNodeImpl extends SuffixTreeNode {
         for(int i=0;i<=this.getNumOfChildren();i++)
             if(this.children[i]!=null)
                 this.children[i].compress();
-
-        if(childLen==1 ){
+        if(childLen==1){
             this.getChars().append(this.children[0].getChars());
             if( this.children[0].getNumOfChildren()!=0){
-                this.children= this.children[0].children;
                 this.numOfChildren= this.children[0].getNumOfChildren();
+                this.children= this.children[0].children;
             }else {
                 this.numOfChildren=0;
+                this.children[0]=null;
             }
-            this.children[0]=null;
+
         }
 
     }
@@ -141,7 +141,6 @@ public class SuffixTreeNodeImpl extends SuffixTreeNode {
     @Override
     public int numOfOccurrences(char[] subword, int from) {
         SuffixTreeNode node= find_node(subword,from,this);
-
         return calculate_leaf(node);
     }
     public int calculate_leaf(SuffixTreeNode node){
