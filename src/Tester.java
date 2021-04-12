@@ -26,7 +26,7 @@ public class Tester {
 
         testSuffixTree();
         // longestRepeatedSuffixTree
-//		testLongestRepeatedSuffixTree();
+        //testLongestRepeatedSuffixTree();
 
 
 

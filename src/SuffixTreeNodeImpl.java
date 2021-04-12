@@ -119,7 +119,6 @@ public class SuffixTreeNodeImpl extends SuffixTreeNode {
                 this.numOfChildren = 0;
                 this.children[0] = null;
             }
-
         }
 
     }
@@ -147,13 +146,11 @@ public class SuffixTreeNodeImpl extends SuffixTreeNode {
             sum += calculate_leaf(child);
         }
         return sum;
-
     }
 
     private SuffixTreeNode find_node(char[] subword, int from, SuffixTreeNode node) {
         if (node == null)
             return null;
-
         if (this.children.length == 0)
             return null;
         from += highShareIndex(subword, from, node);
