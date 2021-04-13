@@ -13,6 +13,7 @@ public class SuffixTreeNodeImpl extends SuffixTreeNode {
 
     /**
      * search specific node in tree
+     *
      * @param c Character to search for
      * @return
      */
@@ -23,9 +24,10 @@ public class SuffixTreeNodeImpl extends SuffixTreeNode {
 
     /**
      * binary search on the children
+     *
      * @param target Character to search for
-     * @param left Left boundary index for searching in the children array
-     * @param right Right boundary index for searching in the children array
+     * @param left   Left boundary index for searching in the children array
+     * @param right  Right boundary index for searching in the children array
      * @return
      */
     @Override
@@ -43,6 +45,7 @@ public class SuffixTreeNodeImpl extends SuffixTreeNode {
 
     /**
      * shift child array
+     *
      * @param until Left boundary index of shifting
      */
     @Override
@@ -59,6 +62,7 @@ public class SuffixTreeNodeImpl extends SuffixTreeNode {
 
     /**
      * add child in order way
+     *
      * @param node node to add
      */
     @Override
@@ -80,8 +84,9 @@ public class SuffixTreeNodeImpl extends SuffixTreeNode {
 
     /**
      * add child to specific node
+     *
      * @param index location in child array
-     * @param node new node
+     * @param node  new node
      */
     private void addChildIndex(int index, SuffixTreeNode node) {
         this.shiftChildren(index);
@@ -172,19 +177,20 @@ public class SuffixTreeNodeImpl extends SuffixTreeNode {
             return null;
         if (this.children.length == 0)
             return null;
-        int highShareIndextemp= highShareIndex(subword, from, node);
-        from +=highShareIndextemp;
+        int highShareIndextemp = highShareIndex(subword, from, node);
+        from += highShareIndextemp;
         if (from == subword.length) {
             return node;
         }
-        if(node.chars!=null)
-            if(highShareIndextemp!=node.chars.size())//check if they are the same if not we should exit
+        if (node.chars != null)
+            if (highShareIndextemp != node.chars.size())//check if they are the same if not we should exit
                 return null;
         return find_node(subword, from, node.search(subword[from]));
     }
 
     /**
      * find the high index that they share togther whith char
+     *
      * @param subword the wanted list
      * @return high index that they share
      */

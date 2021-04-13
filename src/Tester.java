@@ -30,8 +30,6 @@ public class Tester {
         //testLongestRepeatedSuffixTree();
 
 
-
-
         // Notifying the user that the code have passed all tests.
         if (testPassed) {
             System.out.println("All " + testNum + " tests passed!");
@@ -78,7 +76,6 @@ public class Tester {
         test(many.toString().equals("ab"), "The list should be ab");
 
 
-
     }
 
     /**
@@ -118,7 +115,7 @@ public class Tester {
         test(child6.getChars().last == child6.getChars().first, "should be same ");
         child6.compress();
         test(child6.getChars().first.getChar() == 'a', "should be a");
-        test(child6.getChars().last.getChar()=='b' , "should be same b ");
+        test(child6.getChars().last.getChar() == 'b', "should be same b ");
 
     }
 
@@ -149,8 +146,6 @@ public class Tester {
 		testLongestRepeated("abbc", "b");
 		 */
     }
-
-
 
 
     private static void testLongestRepeated(String word, String expected) {
