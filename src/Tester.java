@@ -129,7 +129,10 @@ public class Tester {
         test(!tree1.contains("acb"), "not contain acb");
 
         SuffixTree tree = new SuffixTreeImpl("mississippi");
-
+        test(tree.contains("ippi"), " contain ippi");
+        test(tree.contains("sis"), "contain sis");
+        test(!tree.contains("sss"), "not contain sss");
+        test(!tree.contains("ppp"), "not contain ppp");
         test(tree.numOfOccurrences("iss") == 2, "need to be 2 ");
         test(tree.numOfOccurrences("i") == 4, "need to be 4 ");
         test(tree.numOfOccurrences("ms") == 0, "need to be 0 ");

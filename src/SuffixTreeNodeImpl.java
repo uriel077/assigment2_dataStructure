@@ -172,16 +172,19 @@ public class SuffixTreeNodeImpl extends SuffixTreeNode {
             return null;
         if (this.children.length == 0)
             return null;
-        from += highShareIndex(subword, from, node);
+        int highShareIndextemp= highShareIndex(subword, from, node);
+        from +=highShareIndextemp;
         if (from == subword.length) {
             return node;
         }
+        if(node.chars!=null)
+            if(highShareIndextemp!=node.chars.size())//check if they are the same if not we should exit
+                return null;
         return find_node(subword, from, node.search(subword[from]));
     }
 
     /**
      * find the high index that they share togther whith char
-     *
      * @param subword the wanted list
      * @return high index that they share
      */
