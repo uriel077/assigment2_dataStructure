@@ -27,7 +27,7 @@ public class Tester {
         testSuffixTree();
 
         // longestRepeatedSuffixTree
-        //testLongestRepeatedSuffixTree();
+        testLongestRepeatedSuffixTree();
 
 
         // Notifying the user that the code have passed all tests.
@@ -141,15 +141,16 @@ public class Tester {
     }
 
     private static void testLongestRepeatedSuffixTree() {
-		/*testLongestRepeated("mississippi", "issi");
+		testLongestRepeated("mississippi", "issi");
+        testLongestRepeated("ioiosbdbd", "bd");
 		testLongestRepeated("abc", "X");
 		testLongestRepeated("abbc", "b");
-		 */
+
     }
 
 
     private static void testLongestRepeated(String word, String expected) {
-        //test(new longestRepeatedSuffixTreeImpl(word).getLongestRepeatedSubstring().equals(expected), "Longest repeated substring should be " + expected);
+        test(new longestRepeatedSuffixTreeImpl(word).getLongestRepeatedSubstring().equals(expected), "Longest repeated substring should be " + expected);
     }
 
 }

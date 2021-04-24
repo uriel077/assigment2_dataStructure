@@ -13,7 +13,7 @@ public abstract class longestRepeatedSuffixTree extends CompressedTrie {
         char[] wordChar = (word + "$").toCharArray();
         for (int i = 0; i< wordChar.length; i++)
             addSuffix(wordChar, i);
-        compressTree();
+     //   compressTree();
         createLongestRepeatedSubstring();
     }
 

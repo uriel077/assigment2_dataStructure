@@ -23,7 +23,7 @@ public class longestRepeatedSuffixTreeImpl extends longestRepeatedSuffixTree {
     public void createLongestRepeatedSubstring() {
         // Invoke to help private function to enable recursive method.
         this.traverseInternalNodes(this.root, 0);
-        System.out.println(this.maxLength);
+
     }
 
     @Override
