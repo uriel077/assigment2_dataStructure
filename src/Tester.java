@@ -141,10 +141,16 @@ public class Tester {
     }
 
     private static void testLongestRepeatedSuffixTree() {
-		testLongestRepeated("mississippi", "issi");
+        testLongestRepeated("daamn", "a");
+        testLongestRepeated("mississippi", "issi");
         testLongestRepeated("ioiosbdbd", "bd");
+        testLongestRepeated("bdioiosbd", "bd");
 		testLongestRepeated("abc", "X");
+		testLongestRepeated("abcd", "X");
+		testLongestRepeated("a", "X");
 		testLongestRepeated("abbc", "b");
+		testLongestRepeated("aaaaaaaaaa", "aaaaaaaaa");
+		testLongestRepeated("uriel", "X");
 
     }
 
