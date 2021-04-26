@@ -8,8 +8,12 @@ public class longestRepeatedSuffixTreeImpl extends longestRepeatedSuffixTree {
     private void traverseInternalNodes(SuffixTreeNode node, int nodeDepth) {
         // Recursive iterations over all current node children,
         // Depth Search for the backtracking utilization.
+        int size=1;
         for(int i = 0;i < node.getNumOfChildren();i++) {
-            traverseInternalNodes(node.children[i], nodeDepth + 1);
+           size=1;
+            if(node.chars!=null)
+                size=node.chars.size();
+            traverseInternalNodes(node.children[i], nodeDepth +size);
         }
         // If there are at least 2 children it means this is an internal node,
         // Internal node means it is a candidate to be the max repeated substring in the SuffixTree.
@@ -37,7 +41,7 @@ public class longestRepeatedSuffixTreeImpl extends longestRepeatedSuffixTree {
         SuffixTreeNode nodePtr = this.substringStartNode;
         // Iterating all the way upward to the parent and append it to return the exact substring.
         for(int i = 0;i < this.maxLength;i++) {
-            composedStr = nodePtr.getChars().firstChar() + composedStr;
+            composedStr = nodePtr.getChars() + composedStr;
             nodePtr = nodePtr.getParent();
         }
         return composedStr;
