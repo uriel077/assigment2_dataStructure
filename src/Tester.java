@@ -19,16 +19,15 @@ public class Tester {
         // Each function here should test a different class.
 
         // CharLinkedList
-        //testCharLinkedList();
+        testCharLinkedList();
 
         // SuffixTreeNode
-        //testSuffixTreeNode();
+        testSuffixTreeNode();
 
         testSuffixTree();
+
         // longestRepeatedSuffixTree
-        //testLongestRepeatedSuffixTree();
-
-
+        testLongestRepeatedSuffixTree();
 
 
         // Notifying the user that the code have passed all tests.
@@ -68,12 +67,14 @@ public class Tester {
         test(list.firstChar() == 'a', "The first char should be 'a'");
         test(list.last.getChar() == 'b', "The last char of the list should be b");
         test(list.toString().equals("ab"), "The list should be ab");
+
         CharLinkedList many = new CharLinkedListImpl();
         many.append(list);
         test(many.size() == 2, "The size of the list should be 2");
         test(many.firstChar() == 'a', "The first char should be 'a'");
         test(many.last.getChar() == 'b', "The last char of the list should be b");
         test(many.toString().equals("ab"), "The list should be ab");
+
 
     }
 
@@ -104,45 +105,58 @@ public class Tester {
         SuffixTreeNode child5 = new SuffixTreeNodeImpl(CharLinkedList.from("dog"), node);
         node.addChild(child5);
         test(node.getChildren()[2] == child5, "3rd child should be child5");
-        System.out.println(node.children[0]);
-        System.out.println(node.children[0].chars.last.getChar());
-        System.out.println(node.children[0].getNumOfChildren());
 
-        node.compress();
-
-        System.out.println(node.children[0]);
-        System.out.println(node.children[0].chars.last.getChar());
-        System.out.println(node.children[0].getNumOfChildren());
-
-
-        System.out.println("------------------------------------");
-        SuffixTreeNode node1 = new SuffixTreeNodeImpl();
-        SuffixTreeNode child6 = new SuffixTreeNodeImpl(CharLinkedList.from("mississippi"), node1);
+        //compress
+        SuffixTreeNode child6 = new SuffixTreeNodeImpl(CharLinkedList.from("a"), node);
+        SuffixTreeNode child7 = new SuffixTreeNodeImpl(CharLinkedList.from("b"), node);
+        node.addChild(child6);
+        child6.addChild(child7);
+        test(child6.getChars().first.getChar() == 'a', "should be a");
+        test(child6.getChars().last == child6.getChars().first, "should be same ");
+        child6.compress();
+        test(child6.getChars().first.getChar() == 'a', "should be a");
+        test(child6.getChars().last.getChar() == 'b', "should be same b ");
 
     }
 
     private static void testSuffixTree() {
+        //test contains and numOfOccurrences
         SuffixTree tree1 = new SuffixTreeImpl("abc");
-        //for (SuffixTreeNode child : tree1.getRoot().getChildren())
-        //System.out.println(child);
+        test(!tree1.contains("abcd"), "not contain abcd");
+        test(!tree1.contains("acb"), "not contain acb");
+        test(tree1.contains("ab"), "contain ab");
+        test(tree1.contains("a"), "contain a");
+        test(tree1.numOfOccurrences("abc") == 1, "need to be 1 ");
+
+        //test contains and numOfOccurrence
         SuffixTree tree = new SuffixTreeImpl("mississippi");
-        //for (SuffixTreeNode child : tree.getRoot().getChildren())
-        //System.out.println(child);
-        //tree.compressTree();
+        test(tree.contains("ippi"), " contain ippi");
+        test(tree.contains("sis"), "contain sis");
+        test(!tree.contains("sss"), "not contain sss");
+        test(!tree.contains("ppp"), "not contain ppp");
         test(tree.numOfOccurrences("iss") == 2, "need to be 2 ");
+        test(tree.numOfOccurrences("i") == 4, "need to be 4 ");
         test(tree.numOfOccurrences("ms") == 0, "need to be 0 ");
         test(tree.numOfOccurrences("$") == 1, "need to be 1 ");
     }
 
     private static void testLongestRepeatedSuffixTree() {
-		/*testLongestRepeated("mississippi", "issi");
+        testLongestRepeated("daamn", "a");
+        testLongestRepeated("mississippi", "issi");
+        testLongestRepeated("ioiosbdbd", "bd");
+        testLongestRepeated("bdioiosbd", "bd");
 		testLongestRepeated("abc", "X");
+		testLongestRepeated("abcd", "X");
+		testLongestRepeated("a", "X");
 		testLongestRepeated("abbc", "b");
-		 */
+		testLongestRepeated("aaaaaaaaaa", "aaaaaaaaa");
+		testLongestRepeated("uriel", "X");
+
     }
 
+
     private static void testLongestRepeated(String word, String expected) {
-        //test(new longestRepeatedSuffixTreeImpl(word).getLongestRepeatedSubstring().equals(expected), "Longest repeated substring should be " + expected);
+        test(new longestRepeatedSuffixTreeImpl(word).getLongestRepeatedSubstring().equals(expected), "Longest repeated substring should be " + expected);
     }
 
 }
