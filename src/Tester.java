@@ -154,7 +154,9 @@ public class Tester {
 		testLongestRepeated("supercalifragilisticexpialidocious", "ali");
 		testLongestRepeated("pneumonoultramicroscopicsilicovolcanoconiosis", "co");
 		testLongestRepeated("dvoradvoralamalohavarti", "dvora");
-
+		testLongestRepeated("danisdonewithedanadan", "dan");
+		testLongestRepeated("wabalabadubdub", "aba");
+        testLongestRepeated("wdbaldbadubdub", "dba");
 
 
 
@@ -163,7 +165,7 @@ public class Tester {
 
     private static void testLongestRepeated(String word, String expected) {
         longestRepeatedSuffixTreeImpl tr = new longestRepeatedSuffixTreeImpl(word);
-        //System.out.println(tr.getLongestRepeatedSubstring() + tr.maxLength);
+        System.out.println(tr.getLongestRepeatedSubstring() + tr.maxLength);
         test(new longestRepeatedSuffixTreeImpl(word).getLongestRepeatedSubstring().equals(expected), "Longest repeated substring should be " + expected);
     }
 
