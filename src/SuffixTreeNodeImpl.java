@@ -116,6 +116,19 @@ public class SuffixTreeNodeImpl extends SuffixTreeNode {
     }
 
     /**
+     * override set children for updating parent
+     * @param children
+     * @param numOfChildren
+     */
+    @Override
+    public void setChildren(SuffixTreeNode[] children, int numOfChildren){
+        super.setChildren(children, numOfChildren);
+        for(SuffixTreeNode child: children){
+            if(child != null)
+                child.parent = this;
+        }
+    }
+    /**
      * compress every node with one child
      */
     @Override
@@ -126,10 +139,10 @@ public class SuffixTreeNodeImpl extends SuffixTreeNode {
         for (int i = 0; i < this.getNumOfChildren(); i++)
             this.children[i].compress();
         if (childLen == 1) {
-            this.getChars().append(this.children[0].getChars());
-            if (this.children[0].getNumOfChildren() != 0) {
-                this.numOfChildren = this.children[0].getNumOfChildren();
-                this.children = this.children[0].children;
+            SuffixTreeNode onlyChild = this.children[0];
+            this.getChars().append(onlyChild.getChars());
+            if (onlyChild.getNumOfChildren() != 0) {
+                this.setChildren(onlyChild.children, onlyChild.getNumOfChildren());
             }
         }
     }

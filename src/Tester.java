@@ -151,11 +151,19 @@ public class Tester {
 		testLongestRepeated("abbc", "b");
 		testLongestRepeated("aaaaaaaaaa", "aaaaaaaaa");
 		testLongestRepeated("uriel", "X");
+		testLongestRepeated("supercalifragilisticexpialidocious", "ali");
+		testLongestRepeated("pneumonoultramicroscopicsilicovolcanoconiosis", "co");
+		testLongestRepeated("dvoradvoralamalohavarti", "dvora");
+
+
+
 
     }
 
 
     private static void testLongestRepeated(String word, String expected) {
+        longestRepeatedSuffixTreeImpl tr = new longestRepeatedSuffixTreeImpl(word);
+        //System.out.println(tr.getLongestRepeatedSubstring() + tr.maxLength);
         test(new longestRepeatedSuffixTreeImpl(word).getLongestRepeatedSubstring().equals(expected), "Longest repeated substring should be " + expected);
     }
 

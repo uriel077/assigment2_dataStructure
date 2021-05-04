@@ -71,6 +71,7 @@ public abstract class SuffixTreeNode {
      */
     public abstract void addSuffix(char[] word, int from);
 
+
     /**
      * Compress the node and its descendents using the following rule:
      * For each node, if it has only 1 child - merge it with his (only) child and concatenate their chars;
